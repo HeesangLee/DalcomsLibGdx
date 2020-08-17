@@ -172,17 +172,17 @@ public class LibTestScreen implements Screen {
         });
         gameTimer.setEventListener(new GameTimer.EventListener() {
             @Override
-            public void onTimer1sec(float curTimeSec) {
-                spNum.setNumber((int) curTimeSec);
+            public void onTimer1sec(float curTimeSec,int timeCount) {
+                spNum.setNumber(timeCount);
                 Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
             }
 
             @Override
-            public void onTimer500msec(float curTimeSec) {
+            public void onTimer500msec(float curTimeSec,int timeCount) {
             }
 
             @Override
-            public void onTimer250msec(float curTimeSec) {
+            public void onTimer250msec(float curTimeSec,int timeCount) {
 
             }
         });
