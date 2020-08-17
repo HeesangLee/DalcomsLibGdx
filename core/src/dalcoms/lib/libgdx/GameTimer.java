@@ -69,7 +69,6 @@ public class GameTimer implements Renderable {
 
     private void check1secTimer(float delta) {
         time1sec += delta;
-        Gdx.app.log("DebTestScreen", "curTime" + time1sec);
         if (time1sec >= TIME_1SEC) {
             setCntTime1sec(getCntTime1sec() + 1);
             time1sec = 0f;
