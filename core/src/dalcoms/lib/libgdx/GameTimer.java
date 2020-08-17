@@ -2,7 +2,7 @@ package dalcoms.lib.libgdx;
 
 import com.badlogic.gdx.Gdx;
 
-class GameTimer implements Renderable {
+public class GameTimer implements Renderable {
     private String tag;
     private float curTimeSec = 0f;
     private final float TIME_250MSEC = 0.25f;

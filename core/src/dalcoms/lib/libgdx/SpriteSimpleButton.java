@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-class SpriteSimpleButton extends SpriteGameObject {
+public class SpriteSimpleButton extends SpriteGameObject {
     private Viewport viewport;
     private float onTouchScale = 1.2f;
     private Color onTouchColor = new Color(0f, 0f, 0f, 1f);
