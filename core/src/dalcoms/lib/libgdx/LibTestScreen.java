@@ -95,8 +95,8 @@ public class LibTestScreen implements Screen {
         game.getSpriteBatch().setProjectionMatrix(camera.combined);
         game.getSpriteBatch().begin();
 
-        for (Renderable renderableObj : renderables) {
-            renderableObj.render(delta);
+        for (Renderable renderable : renderables) {
+            renderable.render(delta);
         }
 
         game.getSpriteBatch().end();
