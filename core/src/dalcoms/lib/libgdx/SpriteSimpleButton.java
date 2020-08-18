@@ -151,7 +151,12 @@ public class SpriteSimpleButton extends SpriteGameObject {
     private void checkTouchEffect(boolean isTouched) {
         switch (getOnTouchEffect()) {
             case HOLO:
-                touchHoloEffect(isTouched);
+                if (getSgoTouchHolo() != null) {
+                    touchHoloEffect(isTouched);
+                } else {
+                    Gdx.app.log("SpriteSimpleButton.class", "holo sprite is null");
+                }
+
                 break;
             case SCALE:
                 touchScaleEffect(isTouched);
