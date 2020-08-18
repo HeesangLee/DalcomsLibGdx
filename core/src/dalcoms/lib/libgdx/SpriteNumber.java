@@ -18,7 +18,7 @@ public class SpriteNumber extends GameObject {
     private AlignTo alignTo = AlignTo.LEFT;
 
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
-                        float locationY) {
+            float locationY) {
         super(locationX, locationY, 2, 2);
         spriteNumberArray = new Array<Sprite>();
         this.textureArrayOfNumbers = textureArrayOfNumbers;
@@ -69,8 +69,11 @@ public class SpriteNumber extends GameObject {
     }
 
     public float getNumWidth() {
-        return getSpriteNumberArray().get(0).getX() +
+        return getSpriteNumberArray().get(getSpriteNumberArray().size - 1).getX() -
+               getSpriteNumberArray().get(0).getX() +
                getSpriteNumberArray().get(getSpriteNumberArray().size - 1).getWidth();
+//        return getSpriteNumberArray().get(0).getX() +
+//               getSpriteNumberArray().get(getSpriteNumberArray().size - 1).getWidth();
     }
 
 

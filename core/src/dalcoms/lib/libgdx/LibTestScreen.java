@@ -150,26 +150,28 @@ public class LibTestScreen implements Screen {
         final SpriteNumber spNum =
                 new SpriteNumber(tNum, (int) gameTimer.getCurTimeSec(), 100, 100)
                         .setSpriteBatch(this.game.getSpriteBatch());
-        spNum.move(500, 500, 1f, EaseBackIn.getInstance());
+//        spNum.move(500, 500, 1f, EaseBackIn.getInstance());
         spNum.rotate(360, 3f);
         spNum.paint(1f, 0.5f, 0.5f, 1f, 3f);
-        spNum.setEventListenerRotate(new VariationPerTime.EventListener() {
-            @Override
-            public void onUpdate(float curTime, float curVar) {
-
-            }
-
-            @Override
-            public void onStart(float curTime) {
-
-            }
-
-            @Override
-            public void onFinish(float curTime) {
-                spNum.paint(1f, 1f, 1f, 1f, 5f);
-                spNum.move(100, 700, 3f);
-            }
-        });
+        spNum.setAlignTo(SpriteNumber.AlignTo.CENTER);
+        spNum.setCenterLocationX(viewport.getWorldWidth()/2f);
+//        spNum.setEventListenerRotate(new VariationPerTime.EventListener() {
+//            @Override
+//            public void onUpdate(float curTime, float curVar) {
+//
+//            }
+//
+//            @Override
+//            public void onStart(float curTime) {
+//
+//            }
+//
+//            @Override
+//            public void onFinish(float curTime) {
+//                spNum.paint(1f, 1f, 1f, 1f, 5f);
+//                spNum.move(100, 700, 3f);
+//            }
+//        });
         gameTimer.setEventListener(new GameTimer.EventListener() {
             @Override
             public void onTimer1sec(float curTimeSec,int timeCount) {
