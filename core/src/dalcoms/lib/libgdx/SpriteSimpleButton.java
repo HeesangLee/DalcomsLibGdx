@@ -13,7 +13,7 @@ public class SpriteSimpleButton extends SpriteGameObject {
     private float onTouchScale = 1.2f;
     private Color onTouchColor = new Color(0f, 0f, 0f, 1f);
     private Color originColor;
-    private final float touchEffectVarTime = 0.25f;
+    private final float touchEffectVarTime = 0.15f;
     private boolean touched = false;
     private OnTouchEffect onTouchEffect = OnTouchEffect.SCALE;
     private SpriteGameObject sgoTouchHolo;
