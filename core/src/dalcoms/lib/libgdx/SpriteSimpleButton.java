@@ -17,6 +17,8 @@ public class SpriteSimpleButton extends SpriteGameObject {
     private boolean touched = false;
     private OnTouchEffect onTouchEffect = OnTouchEffect.SCALE;
     private SpriteGameObject sgoTouchHolo;
+    private float touchHoloScaleFrom = 0.5f;
+    private float touchHoloScaleTo = 1f;
 
     public SpriteSimpleButton(Texture texture, Viewport viewport, float locationX,
             float locationY) {
@@ -98,6 +100,22 @@ public class SpriteSimpleButton extends SpriteGameObject {
         this.sgoTouchHolo.setSpriteBatch(getSpriteBatch());
     }
 
+    public float getTouchHoloScaleFrom() {
+        return touchHoloScaleFrom;
+    }
+
+    public void setTouchHoloScaleFrom(float touchHoloScaleFrom) {
+        this.touchHoloScaleFrom = touchHoloScaleFrom;
+    }
+
+    public float getTouchHoloScaleTo() {
+        return touchHoloScaleTo;
+    }
+
+    public void setTouchHoloScaleTo(float touchHoloScaleTo) {
+        this.touchHoloScaleTo = touchHoloScaleTo;
+    }
+
     public OnTouchEffect getOnTouchEffect() {
         return onTouchEffect;
     }
@@ -120,12 +138,14 @@ public class SpriteSimpleButton extends SpriteGameObject {
     private void touchHoloEffect(boolean isTouched) {
         if (isTouched) {
             Array<Var2TimePair> scalePath = new Array<>();
-            scalePath.add(new Var2TimePair(0.8f, 0.8f, 0f));
-            scalePath.add(new Var2TimePair(1f, 1f, this.touchEffectVarTime));
+            scalePath.add(new Var2TimePair(getTouchHoloScaleFrom(), getTouchHoloScaleFrom(), 0f));
+            scalePath.add(new Var2TimePair(getTouchHoloScaleTo(), getTouchHoloScaleTo(),
+                                           this.touchEffectVarTime));
             getSgoTouchHolo().scale(scalePath);
             getSgoTouchHolo().setVisible(true);
         } else {
-            getSgoTouchHolo().scale(0.2f, 0.2f, this.touchEffectVarTime);
+//            getSgoTouchHolo().scale(getTouchHoloScaleFrom(), getTouchHoloScaleFrom(),
+//                                    this.touchEffectVarTime);
             getSgoTouchHolo().setVisible(false);
         }
     }
