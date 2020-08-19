@@ -76,6 +76,24 @@ public class SpriteNumber extends GameObject {
 //               getSpriteNumberArray().get(getSpriteNumberArray().size - 1).getWidth();
     }
 
+    public float getNumberHeight() {
+        float maxHeight = 0f;
+        for (Sprite spriteNum : getSpriteNumberArray()) {
+            if (spriteNum.getHeight() > maxHeight) {
+                maxHeight = spriteNum.getHeight();
+            }
+        }
+        return maxHeight;
+    }
+
+    public float getCenterOfNumX() {
+        return getSpriteNumberArray().get(0).getX() + getNumWidth() / 2f;
+    }
+
+    public float getCenterOfNumY() {
+        return getLocationY() + getNumberHeight() / 2f;
+    }
+
 
     public float getNumLocationX(float numWidth) {
         float ret = 0f;
