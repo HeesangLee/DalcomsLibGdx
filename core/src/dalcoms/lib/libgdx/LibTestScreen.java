@@ -52,6 +52,7 @@ public class LibTestScreen implements Screen {
 //        testScale();
         testNumSprite();
         testSpriteButton();
+        testToggleButton();
     }
 
     @Override
@@ -131,6 +132,23 @@ public class LibTestScreen implements Screen {
         btn1.setSgoTouchHolo(holo);
     }
 
+    private void testToggleButton() {
+        Texture textureBtnDef = new Texture(Gdx.files.internal("btnMusicOn.png"));
+        Texture textureBtnToggle = new Texture(Gdx.files.internal("btnMusicOff.png"));
+
+        SpriteSimpleToggleButton btn =
+                new SpriteSimpleToggleButton(textureBtnDef, textureBtnToggle, viewport,
+                                             this.game.getSpriteBatch(), 500, 400);
+
+        btn.setOnTouchEffect(SpriteSimpleButton.OnTouchEffect.HOLO);
+        SpriteGameObject holo =
+                new SpriteGameObject(new Texture(Gdx.files.internal("circle_222px.png")), 0, 0);
+        holo.setColorA(0.3f);
+        btn.setSgoTouchHolo(holo);
+        renderables.add(btn);
+        gestureDetectables.add(btn);
+    }
+
     private void testNumSprite() {
         final GameTimer gameTimer = new GameTimer().start();
 
@@ -154,7 +172,7 @@ public class LibTestScreen implements Screen {
         spNum.rotate(360, 3f);
         spNum.paint(1f, 0.5f, 0.5f, 1f, 3f);
         spNum.setAlignTo(SpriteNumber.AlignTo.CENTER);
-        spNum.setCenterLocationX(viewport.getWorldWidth()/2f);
+        spNum.setCenterLocationX(viewport.getWorldWidth() / 2f);
 //        spNum.setEventListenerRotate(new VariationPerTime.EventListener() {
 //            @Override
 //            public void onUpdate(float curTime, float curVar) {
@@ -174,17 +192,17 @@ public class LibTestScreen implements Screen {
 //        });
         gameTimer.setEventListener(new GameTimer.EventListener() {
             @Override
-            public void onTimer1sec(float curTimeSec,int timeCount) {
+            public void onTimer1sec(float curTimeSec, int timeCount) {
                 spNum.setNumber(timeCount);
                 Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
             }
 
             @Override
-            public void onTimer500msec(float curTimeSec,int timeCount) {
+            public void onTimer500msec(float curTimeSec, int timeCount) {
             }
 
             @Override
-            public void onTimer250msec(float curTimeSec,int timeCount) {
+            public void onTimer250msec(float curTimeSec, int timeCount) {
 
             }
         });

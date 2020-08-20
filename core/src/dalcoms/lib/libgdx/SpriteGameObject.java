@@ -88,6 +88,7 @@ public class SpriteGameObject extends GameObject {
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
+        this.sprite.setPosition(getLocationX(), getLocationY());
         setWidth(sprite.getWidth());
         setHeight(sprite.getHeight());
     }
