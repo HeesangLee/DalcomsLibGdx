@@ -1,5 +1,6 @@
 package dalcoms.lib.libgdx;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,20 +10,23 @@ public class SpriteSimpleToggleButton extends SpriteSimpleButton {
     private ButtonState btnToggleState = ButtonState.DEFAULT;
     private boolean toggleOnLongPress = false;
     private boolean toggleOnTap = true;
-    Texture textureDefault, textureToggle;
+    //    Texture textureDefault, textureToggle;
+    private Sprite spriteDefault, spriteToggled;
 
     public SpriteSimpleToggleButton(Texture texture1, Texture texture2, Viewport viewport,
             float locationX, float locationY) {
         super(texture1, viewport, locationX, locationY);
-        this.textureDefault = texture1;
-        this.textureToggle = texture2;
+        this.spriteDefault = getSprite();
+        this.spriteToggled = new Sprite((texture2));
+        spriteToggled.setPosition(locationX, locationY);
     }
 
     public SpriteSimpleToggleButton(Texture texture1, Texture texture2, Viewport viewport,
             SpriteBatch spriteBatch, float locationX, float locationY) {
         super(texture1, viewport, spriteBatch, locationX, locationY);
-        this.textureDefault = texture1;
-        this.textureToggle = texture2;
+        this.spriteDefault = getSprite();
+        this.spriteToggled = new Sprite((texture2));
+        spriteToggled.setPosition(locationX, locationY);
     }
 
     @Override
@@ -51,12 +55,10 @@ public class SpriteSimpleToggleButton extends SpriteSimpleButton {
     public void setBtnToggleState(ButtonState btnToggleState) {
         if (this.btnToggleState != btnToggleState) {
             this.btnToggleState = btnToggleState;
-            setSprite(new Sprite(getButtonTexture(btnToggleState)));
+//            setSprite(new Sprite(getButtonTexture(btnToggleState)));
+            setSprite(btnToggleState == ButtonState.DEFAULT ? this.spriteDefault :
+                              this.spriteToggled);
         }
-    }
-
-    private Texture getButtonTexture(ButtonState btnToggleState) {
-        return btnToggleState == ButtonState.DEFAULT ? textureDefault : textureToggle;
     }
 
     public boolean isToggleOnLongPress() {
@@ -75,13 +77,60 @@ public class SpriteSimpleToggleButton extends SpriteSimpleButton {
         this.toggleOnTap = toggleOnTap;
     }
 
-    public void setTextureDefault(Texture textureDefault) {
-        this.textureDefault = textureDefault;
+    @Override
+    public void setColorR(float colorR) {
+        super.setColorR(colorR);
+        this.spriteDefault
+                .setColor(colorR, this.spriteDefault.getColor().g, this.spriteDefault.getColor().b,
+                          this.spriteDefault.getColor().a);
+        this.spriteToggled
+                .setColor(colorR, this.spriteToggled.getColor().g, this.spriteToggled.getColor().b,
+                          this.spriteToggled.getColor().a);
+
     }
 
+    @Override
+    public void setColorG(float colorG) {
+        super.setColorG(colorG);
+        this.spriteDefault.setColor(this.spriteDefault.getColor().r, colorG,
+                                    this.spriteDefault.getColor().b,
+                                    this.spriteDefault.getColor().a);
+        this.spriteToggled.setColor(this.spriteToggled.getColor().r, colorG,
+                                    this.spriteToggled.getColor().b,
+                                    this.spriteToggled.getColor().a);
+    }
 
-    public void setTextureToggle(Texture textureToggle) {
-        this.textureToggle = textureToggle;
+    @Override
+    public void setColorB(float colorB) {
+        super.setColorB(colorB);
+        this.spriteDefault
+                .setColor(this.spriteDefault.getColor().r, this.spriteDefault.getColor().g,
+                          colorB, this.spriteDefault.getColor().a);
+        this.spriteToggled
+                .setColor(this.spriteToggled.getColor().r, this.spriteToggled.getColor().g,
+                          colorB, this.spriteToggled.getColor().a);
+    }
+
+    @Override
+    public void setColorA(float colorA) {
+        super.setColorA(colorA);
+        this.spriteDefault
+                .setColor(this.spriteDefault.getColor().r, this.spriteDefault.getColor().g,
+                          this.spriteDefault.getColor().b, colorA);
+        this.spriteToggled
+                .setColor(this.spriteToggled.getColor().r, this.spriteToggled.getColor().g,
+                          this.spriteToggled.getColor().b, colorA);
+    }
+
+    @Override
+    public void setColor(float colorR, float colorG, float colorB, float colorA) {
+        super.setColor(colorR, colorG, colorB, colorA);
+        this.spriteDefault.setColor(colorR, colorG, colorB, colorA);
+        this.spriteToggled.setColor(colorR, colorG, colorB, colorA);
+    }
+
+    public void setColor(Color tint) {
+        setColor(tint.r, tint.g, tint.b, tint.a);
     }
 
     public enum ButtonState {

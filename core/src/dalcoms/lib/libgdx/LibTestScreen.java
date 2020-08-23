@@ -133,12 +133,15 @@ public class LibTestScreen implements Screen {
     }
 
     private void testToggleButton() {
-        Texture textureBtnDef = new Texture(Gdx.files.internal("btnMusicOn.png"));
-        Texture textureBtnToggle = new Texture(Gdx.files.internal("btnMusicOff.png"));
+        Texture textureBtnDef = new Texture(Gdx.files.internal("ico_musicOn.png"));
+        Texture textureBtnToggle = new Texture(Gdx.files.internal("ico_musicOff.png"));
 
         SpriteSimpleToggleButton btn =
                 new SpriteSimpleToggleButton(textureBtnDef, textureBtnToggle, viewport,
                                              this.game.getSpriteBatch(), 500, 400);
+
+        btn.setColor(1f,0.2f,0.1f,1f);
+        btn.moveX(200,1f);
 
         btn.setOnTouchEffect(SpriteSimpleButton.OnTouchEffect.HOLO);
         SpriteGameObject holo =
