@@ -8,6 +8,9 @@ import dalcoms.lib.libgdx.easingfunctions.IEasingFunction;
 public class GameObject implements Renderable, IGestureInput {
     private Array<String> tags;
     private int index = -1;
+    private int indexA = -1;
+    private int indexB = -1;
+    private int indexC = -1;
     private float locationX = 0f, locationY = 0f, width = 0f, height = 0f, scaleX = 1f, scaleY = 1f;
     private float rotationAngle = 0f;
     private float colorR = 1f, colorG = 1f, colorB = 1f, colorA = 1f;
@@ -1183,6 +1186,30 @@ public class GameObject implements Renderable, IGestureInput {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public int getIndexA() {
+        return indexA;
+    }
+
+    public void setIndexA(int indexA) {
+        this.indexA = indexA;
+    }
+
+    public int getIndexB() {
+        return indexB;
+    }
+
+    public void setIndexB(int indexB) {
+        this.indexB = indexB;
+    }
+
+    public int getIndexC() {
+        return indexC;
+    }
+
+    public void setIndexC(int indexC) {
+        this.indexC = indexC;
     }
 
     public enum TouchAreaType {
