@@ -1043,8 +1043,8 @@ public class GameObject implements Renderable, IGestureInput {
     public void setColor(float colorR, float colorG, float colorB, float colorA) {
         setColorR(colorR);
         setColorG(colorG);
-        setColorG(colorB);
-        setColorG(colorA);
+        setColorB(colorB);
+        setColorA(colorA);
     }
 
     public boolean isOnMoving() {
