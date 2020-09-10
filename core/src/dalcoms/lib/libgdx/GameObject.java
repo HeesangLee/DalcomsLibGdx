@@ -473,7 +473,7 @@ public class GameObject implements Renderable, IGestureInput {
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 //        Gdx.app.log("DebTestScreen", "TouchDragged x1 : " + screenX + "\ty1 : " + screenY);
-        if (isInTouchArea(screenX, screenY) & elLongPress != null) {
+        if (isInTouchArea(screenX, screenY) & elTouchDragged != null) {
             elTouchDragged.onEvent(screenX, screenY, pointer);
             return true;
         }
