@@ -18,7 +18,7 @@ public class SpriteNumber extends GameObject {
     private AlignTo alignTo = AlignTo.LEFT;
 
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
-            float locationY) {
+                        float locationY) {
         super(locationX, locationY, 2, 2);
         spriteNumberArray = new Array<Sprite>();
         this.textureArrayOfNumbers = textureArrayOfNumbers;
@@ -34,6 +34,16 @@ public class SpriteNumber extends GameObject {
         if (getNumber() != number) {
             this.number = number;
             this.setSpriteNumber(number);
+        }
+    }
+
+    public void setNumber(int number, boolean paintColor) {
+        if (getNumber() != number) {
+            this.number = number;
+            this.setSpriteNumber(number);
+            if (paintColor) {
+                setColor(getColorR(), getColorG(), getColorB(), getColorA());
+            }
         }
     }
 
