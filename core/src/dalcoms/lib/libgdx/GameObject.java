@@ -626,7 +626,7 @@ public class GameObject implements Renderable, IGestureInput {
     }
 
     public void paint(float toR, float toG, float toB, float toA, float time,
-            IEasingFunction easingFunction) {
+                      IEasingFunction easingFunction) {
         paint(new Var4TimePair(toR, toG, toB, toA, time), easingFunction);
     }
 
@@ -1211,6 +1211,16 @@ public class GameObject implements Renderable, IGestureInput {
     public void setIndexC(int indexC) {
         this.indexC = indexC;
     }
+
+    public void stopMoveX(boolean initialState) {
+        vptMoveX.stop(initialState);
+    }
+
+    public void stopMoveY(boolean initialState) {
+        vptMoveX.stop(initialState);
+    }
+
+
 
     public enum TouchAreaType {
         RECTANGLE, CIRCLE_WIDTH, CIRCLE_HEIGHT

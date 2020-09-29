@@ -50,9 +50,11 @@ public class LibTestScreen implements Screen {
 //        testTouch();
 //        testOverrideSetter();
 //        testScale();
-        testNumSprite();
-        testSpriteButton();
-        testToggleButton();
+//        testNumSprite();
+//        testSpriteButton();
+//        testToggleButton();
+//        testVariationPerTimeClass();
+        testGameObjectVarPerTime();
     }
 
     @Override
@@ -140,8 +142,8 @@ public class LibTestScreen implements Screen {
                 new SpriteSimpleToggleButton(textureBtnDef, textureBtnToggle, viewport,
                                              this.game.getSpriteBatch(), 500, 400);
 
-        btn.setColor(1f,0.2f,0.1f,1f);
-        btn.moveX(200,1f);
+        btn.setColor(1f, 0.2f, 0.1f, 1f);
+        btn.moveX(200, 1f);
 
         btn.setOnTouchEffect(SpriteSimpleButton.OnTouchEffect.HOLO);
         SpriteGameObject holo =
@@ -418,6 +420,15 @@ public class LibTestScreen implements Screen {
         Array<Var2TimePair> mo = new Array<>();
         mo.add(new Var2TimePair(10, 0, 1), new Var2TimePair(20, 30, 4));
         go.move(mo, EaseCircIn.getInstance());
+
+    }
+
+    private void testGameObjectVarPerTime() {
+        Texture textureRect125test = new Texture(Gdx.files.internal("rect125test.png"));
+        SpriteGameObject sgo = new SpriteGameObject(textureRect125test, 0, 0)
+                .setSpriteBatch(this.game.getSpriteBatch());
+        renderables.add(sgo);
+        sgo.moveX(1000, 3);
 
     }
 
