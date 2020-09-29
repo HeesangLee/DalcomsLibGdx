@@ -1212,15 +1212,64 @@ public class GameObject implements Renderable, IGestureInput {
         this.indexC = indexC;
     }
 
+    public void stopMove(boolean initialState) {
+        stopMoveX(initialState);
+        stopMoveY(initialState);
+    }
+
+    public void stopAllMotionScalePaint(boolean initialState) {
+        stopMove(initialState);
+        stopPaint(initialState);
+        stopScale(initialState);
+    }
+
     public void stopMoveX(boolean initialState) {
         vptMoveX.stop(initialState);
     }
 
     public void stopMoveY(boolean initialState) {
-        vptMoveX.stop(initialState);
+        vptMoveY.stop(initialState);
     }
 
+    public void stopRotate(boolean initialState) {
+        vptRotate.stop(initialState);
+    }
 
+    public void stopPaint(boolean initialState) {
+        stopPaintR(initialState);
+        stopPaintG(initialState);
+        stopPaintB(initialState);
+        stopPaintA(initialState);
+    }
+
+    public void stopPaintR(boolean initialState) {
+        vptPaintR.stop(initialState);
+    }
+
+    public void stopPaintG(boolean initialState) {
+        vptPaintG.stop(initialState);
+    }
+
+    public void stopPaintB(boolean initialState) {
+        vptPaintB.stop(initialState);
+    }
+
+    public void stopPaintA(boolean initialState) {
+        vptPaintA.stop(initialState);
+    }
+
+    public void stopScale(boolean initialState) {
+        stopScaleX(initialState);
+        stopScaleY(initialState);
+    }
+
+    public void stopScaleX(boolean initialState) {
+        vptScaleX.stop(initialState);
+    }
+
+    public void stopScaleY(boolean initialState) {
+        vptScaleY.stop(initialState);
+    }
 
     public enum TouchAreaType {
         RECTANGLE, CIRCLE_WIDTH, CIRCLE_HEIGHT
