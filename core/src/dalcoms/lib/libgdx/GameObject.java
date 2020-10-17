@@ -81,9 +81,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elMoveX != null) {
-                    elMoveX.onFinish(curTime);
+                    elMoveX.onFinish(curTime, curVar);
                 }
                 onMovingX = false;
             }
@@ -109,9 +109,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elMoveY != null) {
-                    elMoveY.onFinish(curTime);
+                    elMoveY.onFinish(curTime, curVar);
                 }
                 onMovingY = false;
             }
@@ -137,9 +137,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elRotate != null) {
-                    elRotate.onFinish(curTime);
+                    elRotate.onFinish(curTime, curVar);
                 }
                 onRotating = false;
             }
@@ -165,9 +165,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elPaintR != null) {
-                    elPaintR.onFinish(curTime);
+                    elPaintR.onFinish(curTime, curVar);
                 }
                 onPaintingR = false;
             }
@@ -193,9 +193,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elPaintG != null) {
-                    elPaintG.onFinish(curTime);
+                    elPaintG.onFinish(curTime, curVar);
                 }
                 onPaintingG = false;
             }
@@ -221,9 +221,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elPaintB != null) {
-                    elPaintB.onFinish(curTime);
+                    elPaintB.onFinish(curTime, curVar);
                 }
                 onPaintingB = false;
             }
@@ -249,9 +249,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elPaintA != null) {
-                    elPaintA.onFinish(curTime);
+                    elPaintA.onFinish(curTime, curVar);
                 }
                 onPaintingA = false;
             }
@@ -277,9 +277,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elScaleX != null) {
-                    elScaleX.onFinish(curTime);
+                    elScaleX.onFinish(curTime, curVar);
                 }
                 onScalingX = false;
             }
@@ -305,9 +305,9 @@ public class GameObject implements Renderable, IGestureInput {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 if (elScaleY != null) {
-                    elScaleY.onFinish(curTime);
+                    elScaleY.onFinish(curTime, curVar);
                 }
                 onScalingY = false;
             }
@@ -626,7 +626,7 @@ public class GameObject implements Renderable, IGestureInput {
     }
 
     public void paint(float toR, float toG, float toB, float toA, float time,
-                      IEasingFunction easingFunction) {
+            IEasingFunction easingFunction) {
         paint(new Var4TimePair(toR, toG, toB, toA, time), easingFunction);
     }
 

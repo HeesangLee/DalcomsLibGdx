@@ -22,6 +22,7 @@ import dalcoms.lib.libgdx.easingfunctions.EaseBounceOut;
 import dalcoms.lib.libgdx.easingfunctions.EaseCircIn;
 
 public class LibTestScreen implements Screen {
+    private final String tag = "dalcoms.lib.libgdx : LibTestScreen.java";
     private final HsGdxLibGame game;
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -391,7 +392,7 @@ public class LibTestScreen implements Screen {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 Gdx.app.log(strDebug + "x", "Finished @" + String.valueOf(curTime));
             }
         });
@@ -409,7 +410,7 @@ public class LibTestScreen implements Screen {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 Gdx.app.log(strDebug + "y", "Finished @" + String.valueOf(curTime));
             }
         });
@@ -429,6 +430,22 @@ public class LibTestScreen implements Screen {
                 .setSpriteBatch(this.game.getSpriteBatch());
         renderables.add(sgo);
         sgo.moveX(1000, 3);
+        sgo.setEventListenerMoveX(new VariationPerTime.EventListener() {
+            @Override
+            public void onUpdate(float curTime, float curVar) {
+                Gdx.app.log(tag, "u(t, v) : " + curTime + "," + curVar);
+            }
+
+            @Override
+            public void onStart(float curTime) {
+                Gdx.app.log(tag, "s(t) : " + curTime);
+            }
+
+            @Override
+            public void onFinish(float curTime, float curVar) {
+                Gdx.app.log(tag, "f(t, c) : " + curTime + "," + curVar);
+            }
+        });
 
     }
 
@@ -455,7 +472,7 @@ public class LibTestScreen implements Screen {
             }
 
             @Override
-            public void onFinish(float curTime) {
+            public void onFinish(float curTime, float curVar) {
                 Gdx.app.log(strDebug, "varTime finished @" + String.valueOf(curTime));
             }
         });

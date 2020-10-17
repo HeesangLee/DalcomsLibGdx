@@ -54,7 +54,10 @@ public class VariationPerTime implements Renderable {
         } else {
             if (isFinishedNow()) {
                 if (this.eventListener != null) {
-                    this.eventListener.onFinish(getFinishedTime());
+                    this.eventListener.onFinish(getFinishedTime(),
+                                                getVarTimeArray().get(this.varTimeArray.size - 1)
+                                                                 .getVariation());
+
                 }
                 setFinishedNow(false, 0f);
             }
@@ -244,6 +247,6 @@ public class VariationPerTime implements Renderable {
 
         void onStart(float curTime);
 
-        void onFinish(float curTime);
+        void onFinish(float curTime, float curVar);
     }
 }
