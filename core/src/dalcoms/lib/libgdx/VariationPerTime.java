@@ -61,7 +61,7 @@ public class VariationPerTime implements Renderable {
                                                             .get(this.varTimeArray.size - 1)
                                                             .getVariation());
                     } else {
-                        Gdx.app.log(tag, "onFinish() is skipped. var array is empty");
+                        Gdx.app.log("VariationPerTime.java", "onFinish() is skipped. var array is empty");
                     }
 
 
