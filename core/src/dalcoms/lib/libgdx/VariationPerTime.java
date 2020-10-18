@@ -1,5 +1,6 @@
 package dalcoms.lib.libgdx;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 
 import dalcoms.lib.libgdx.easingfunctions.EaseLinear;
@@ -54,9 +55,15 @@ public class VariationPerTime implements Renderable {
         } else {
             if (isFinishedNow()) {
                 if (this.eventListener != null) {
-                    this.eventListener.onFinish(getFinishedTime(),
-                                                getVarTimeArray().get(this.varTimeArray.size - 1)
-                                                                 .getVariation());
+                    if (getVarTimeArray().notEmpty()) {
+                        this.eventListener.onFinish(getFinishedTime(),
+                                                    getVarTimeArray()
+                                                            .get(this.varTimeArray.size - 1)
+                                                            .getVariation());
+                    } else {
+                        Gdx.app.log(tag, "onFinish() is skipped. var array is empty");
+                    }
+
 
                 }
                 setFinishedNow(false, 0f);
