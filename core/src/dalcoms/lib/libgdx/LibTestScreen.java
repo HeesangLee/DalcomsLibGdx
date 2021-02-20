@@ -433,7 +433,7 @@ public class LibTestScreen implements Screen {
         sgo.setEventListenerMoveX(new VariationPerTime.EventListener() {
             @Override
             public void onUpdate(float curTime, float curVar) {
-                Gdx.app.log(tag, "u(t, v) : " + curTime + "," + curVar);
+                Gdx.app.log(tag, "updated(t, v) : " + curTime + "," + curVar);
             }
 
             @Override
@@ -443,7 +443,7 @@ public class LibTestScreen implements Screen {
 
             @Override
             public void onFinish(float curTime, float curVar) {
-                Gdx.app.log(tag, "f(t, c) : " + curTime + "," + curVar);
+                Gdx.app.log(tag, "finished(t, c) : " + curTime + "," + curVar);
             }
         });
 
