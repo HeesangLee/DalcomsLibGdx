@@ -52,6 +52,7 @@ public class SpriteSimpleButton extends SpriteGameObject {
 
     private void drawTouchedHoloEffect(float delta) {
         if (getSgoTouchHolo() != null) {
+            getSgoTouchHolo().setCenterLocation(getCenterLocationX(), getCenterLocationY());
             getSgoTouchHolo().render(delta);
         }
     }
