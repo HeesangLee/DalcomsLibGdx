@@ -232,6 +232,16 @@ public class SpriteSimpleToggleButton extends SpriteSimpleButton {
         super.setScale(scale);
         getSpriteToggled().setScale(scale);
     }
+    @Override
+    public void setSpriteOriginCenter() {
+        super.setSpriteOriginCenter();
+        getSpriteToggled().setOriginCenter();
+    }
+    @Override
+    public void setSpriteOrigin(float originX, float originY) {
+        super.setSpriteOrigin(originX,originY);
+        getSpriteToggled().setOrigin(originX, originY);
+    }
     //====
 
     public enum ButtonState {

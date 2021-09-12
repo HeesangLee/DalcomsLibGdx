@@ -218,6 +218,14 @@ public class SpriteGameObject extends GameObject {
         this.sprite.setColor(colorR, colorG, colorB, colorA);
     }
 
+    public void setSpriteOriginCenter() {
+        this.sprite.setOriginCenter();
+    }
+
+    public void setSpriteOrigin(float originX, float originY) {
+        this.sprite.setOrigin(originX, originY);
+    }
+
     public void setColor(Color tint) {
 //        super.setColor(tint.r, tint.g, tint.b, tint.a);
 //        this.sprite.setColor(tint);
