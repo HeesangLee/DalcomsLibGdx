@@ -133,6 +133,107 @@ public class SpriteSimpleToggleButton extends SpriteSimpleButton {
         setColor(tint.r, tint.g, tint.b, tint.a);
     }
 
+    //@2021-09-12
+    public Sprite getSpriteDefault() {
+        return spriteDefault;
+    }
+
+    public Sprite getSpriteToggled() {
+        return spriteToggled;
+    }
+
+    @Override
+    public void setLocationX(float locationX) {
+        super.setLocationX(locationX);
+        getSpriteToggled().setX(locationX);
+    }
+
+    @Override
+    public void setLocationY(float locationY) {
+        super.setLocationY(locationY);
+        getSpriteToggled().setY(locationY);
+    }
+
+    @Override
+    public void setLocation(float locationX, float locationY) {
+//        super.setLocation(locationX, locationY);
+        setLocationX(locationX);
+        setLocationY(locationY);
+    }
+
+    @Override
+    public void setLocation(Point2DFloat location) {
+//        super.setLocation(location);
+        setLocation(location.getX(), location.getY());
+    }
+
+    @Override
+    public void setCenterLocationX(float x) {
+        super.setCenterLocationX(x);
+        getSpriteToggled().setCenterX(x);
+    }
+
+    @Override
+    public void setCenterLocationY(float y) {
+        super.setCenterLocationY(y);
+        getSpriteToggled().setCenterY(y);
+    }
+
+    @Override
+    public void setCenterLocation(float x, float y) {
+        super.setCenterLocation(x, y);
+        getSpriteToggled().setCenter(x, y);
+    }
+
+    @Override
+    public void setRotationAngle(float rotationAngle) {
+        super.setRotationAngle(rotationAngle);
+        getSpriteToggled().setRotation(rotationAngle);
+    }
+
+    @Override
+    public void setWidth(float width) {
+        super.setWidth(width);
+        getSpriteToggled().setSize(width, getSpriteToggled().getHeight());
+    }
+
+    @Override
+    public void setHeight(float height) {
+        super.setHeight(height);
+        getSpriteToggled().setSize(getSpriteToggled().getWidth(), height);
+    }
+
+    @Override
+    public void setSize(float width, float height) {
+        super.setSize(width, height);
+        getSpriteToggled().setSize(width, height);
+    }
+
+    @Override
+    public void setSize(Point2DFloat size) {
+//        super.setSize(size);
+        setSize(size.getX(), size.getY());
+    }
+
+    @Override
+    public void setScaleX(float scaleX) {
+        super.setScaleX(scaleX);
+        getSpriteToggled().setScale(scaleX, getSpriteToggled().getScaleY());
+    }
+
+    @Override
+    public void setScaleY(float scaleY) {
+        super.setScaleY(scaleY);
+        getSpriteToggled().setScale(getSpriteToggled().getScaleX(), scaleY);
+    }
+
+    @Override
+    public void setScale(float scale) {
+        super.setScale(scale);
+        getSpriteToggled().setScale(scale);
+    }
+    //====
+
     public enum ButtonState {
         DEFAULT, TOGGLED
     }
