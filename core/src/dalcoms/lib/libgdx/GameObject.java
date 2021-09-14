@@ -11,6 +11,7 @@ public class GameObject implements Renderable, IGestureInput {
     private int indexA = -1;
     private int indexB = -1;
     private int indexC = -1;
+    private Object userData;
     private float locationX = 0f, locationY = 0f, width = 0f, height = 0f, scaleX = 1f, scaleY = 1f;
     private float rotationAngle = 0f;
     private float colorR = 1f, colorG = 1f, colorB = 1f, colorA = 1f;
@@ -1179,6 +1180,17 @@ public class GameObject implements Renderable, IGestureInput {
         return tags.removeValue(tag, identity);
     }
 
+    public Object getUserData() {
+        return userData;
+    }
+
+    public void setUserData(Object userData) {
+        this.userData = userData;
+    }
+
+    public void resetUserData() {
+        this.userData = null;
+    }
 
     public int getIndex() {
         return index;
