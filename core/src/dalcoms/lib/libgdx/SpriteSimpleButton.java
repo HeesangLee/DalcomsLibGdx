@@ -170,7 +170,7 @@ public class SpriteSimpleButton extends SpriteGameObject {
         }
     }
 
-    private void checkTouchEffect(boolean isTouched) {
+    public void checkTouchEffect(boolean isTouched) {
         switch (getOnTouchEffect()) {
             case HOLO:
                 if (getSgoTouchHolo() != null) {
