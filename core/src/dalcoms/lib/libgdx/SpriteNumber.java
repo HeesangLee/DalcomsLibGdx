@@ -17,11 +17,31 @@ public class SpriteNumber extends GameObject {
     private float gap = 8f;
     private AlignTo alignTo = AlignTo.LEFT;
 
+    private float masterScale = 1.0f;
+
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
-                        float locationY) {
+            float locationY) {
         super(locationX, locationY, 2, 2);
         spriteNumberArray = new Array<Sprite>();
         this.textureArrayOfNumbers = textureArrayOfNumbers;
+        this.setNumber(number);
+    }
+
+    /**
+     * @param textureArrayOfNumbers Texture array of numbers 0..9
+     * @param number                initial number
+     * @param locationX             location x
+     * @param locationY             location y
+     * @param masterScale           master scale.. -> set size of the each number sprite with this scale as creation
+     */
+    public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
+            float locationY, float masterScale) {
+        super(locationX, locationY, 2, 2);
+        spriteNumberArray = new Array<Sprite>();
+        this.textureArrayOfNumbers = textureArrayOfNumbers;
+        this.masterScale = masterScale;
+        setGap(getGap() * masterScale);
+
         this.setNumber(number);
     }
 
@@ -66,10 +86,15 @@ public class SpriteNumber extends GameObject {
             digitNum = Character.getNumericValue(charNum[i]);
 
             Sprite tempSprite = new Sprite(textureArrayOfNumbers.get(digitNum));
+            tempSprite.setSize(tempSprite.getWidth() * getMasterScale(),
+                               tempSprite.getHeight() * getMasterScale());
+            tempSprite.setOriginCenter();
+
             tempSprite.setPosition(positionX, getLocationY());
 
             spriteNumberArray.add(tempSprite);
-            positionX += (float) textureArrayOfNumbers.get(digitNum).getWidth() + getGap();
+            positionX += (float) textureArrayOfNumbers.get(digitNum).getWidth() * getMasterScale() +
+                         getGap();
         }
 
         positionX = getNumLocationX(getNumWidth());
@@ -374,5 +399,9 @@ public class SpriteNumber extends GameObject {
 
     public enum AlignTo {
         LEFT, CENTER, RIGHT
+    }
+
+    public float getMasterScale() {
+        return masterScale;
     }
 }

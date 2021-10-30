@@ -51,11 +51,11 @@ public class LibTestScreen implements Screen {
 //        testTouch();
 //        testOverrideSetter();
 //        testScale();
-//        testNumSprite();
+        testNumSprite();
 //        testSpriteButton();
 //        testToggleButton();
 //        testVariationPerTimeClass();
-        testGameObjectVarPerTime();
+//        testGameObjectVarPerTime();
     }
 
     @Override
@@ -172,7 +172,7 @@ public class LibTestScreen implements Screen {
         tNum.add(new Texture(Gdx.files.internal("num_9.png")));
 
         final SpriteNumber spNum =
-                new SpriteNumber(tNum, (int) gameTimer.getCurTimeSec(), 100, 100)
+                new SpriteNumber(tNum, (int) gameTimer.getCurTimeSec(), 100, 100,0.5f)
                         .setSpriteBatch(this.game.getSpriteBatch());
 //        spNum.move(500, 500, 1f, EaseBackIn.getInstance());
         spNum.rotate(360, 3f);
@@ -199,8 +199,7 @@ public class LibTestScreen implements Screen {
         gameTimer.setEventListener(new GameTimer.EventListener() {
             @Override
             public void onTimer1sec(float curTimeSec, int timeCount) {
-                spNum.setNumber(timeCount);
-                Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
+
             }
 
             @Override
@@ -209,6 +208,8 @@ public class LibTestScreen implements Screen {
 
             @Override
             public void onTimer250msec(float curTimeSec, int timeCount) {
+                spNum.setNumber(timeCount);
+                Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
 
             }
         });
