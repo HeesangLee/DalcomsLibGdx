@@ -36,7 +36,7 @@ public class SpriteNumber extends GameObject {
      */
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
             float locationY, float masterScale) {
-        super(locationX, locationY, 2, 2);
+        super(locationX, locationY, 2*masterScale, 2*masterScale);
         spriteNumberArray = new Array<Sprite>();
         this.textureArrayOfNumbers = textureArrayOfNumbers;
         this.masterScale = masterScale;
