@@ -22,8 +22,7 @@ public class SpriteNumber extends GameObject {
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
             float locationY) {
         super(locationX, locationY, 2, 2);
-        spriteNumberArray = new Array<Sprite>();
-        this.textureArrayOfNumbers = textureArrayOfNumbers;
+        initConfig(textureArrayOfNumbers, 1.0f, AlignTo.LEFT);
         this.setNumber(number);
     }
 
@@ -36,13 +35,28 @@ public class SpriteNumber extends GameObject {
      */
     public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
             float locationY, float masterScale) {
-        super(locationX, locationY, 2*masterScale, 2*masterScale);
-        spriteNumberArray = new Array<Sprite>();
+        super(locationX, locationY, 2 * masterScale, 2 * masterScale);
+        initConfig(textureArrayOfNumbers, masterScale, AlignTo.LEFT);
+
+        this.setNumber(number);
+    }
+
+    public SpriteNumber(Array<Texture> textureArrayOfNumbers, int number, float locationX,
+            float locationY, float masterScale, AlignTo alignTo) {
+        super(locationX, locationY, 2 * masterScale, 2 * masterScale);
+        initConfig(textureArrayOfNumbers, masterScale, alignTo);
+
+        this.setNumber(number);
+    }
+
+    private void initConfig(Array<Texture> textureArrayOfNumbers, float masterScale,
+            AlignTo alignTo) {
+        spriteNumberArray = new Array<>();
         this.textureArrayOfNumbers = textureArrayOfNumbers;
         this.masterScale = masterScale;
         setGap(getGap() * masterScale);
-
-        this.setNumber(number);
+        setAlignTo(alignTo);
+        setHeight(getNumberHeight(false));
     }
 
     public SpriteNumber setSpriteBatch(SpriteBatch spriteBatch) {
@@ -51,10 +65,7 @@ public class SpriteNumber extends GameObject {
     }
 
     public void setNumber(int number) {
-        if (getNumber() != number) {
-            this.number = number;
-            this.setSpriteNumber(number);
-        }
+        setNumber(number, false);
     }
 
     public void setNumber(int number, boolean paintColor) {
@@ -84,15 +95,13 @@ public class SpriteNumber extends GameObject {
 
         for (int i = 0; i < charNum.length; i++) {
             digitNum = Character.getNumericValue(charNum[i]);
-
             Sprite tempSprite = new Sprite(textureArrayOfNumbers.get(digitNum));
             tempSprite.setSize(tempSprite.getWidth() * getMasterScale(),
                                tempSprite.getHeight() * getMasterScale());
             tempSprite.setOriginCenter();
-
             tempSprite.setPosition(positionX, getLocationY());
-
             spriteNumberArray.add(tempSprite);
+
             positionX += (float) textureArrayOfNumbers.get(digitNum).getWidth() * getMasterScale() +
                          getGap();
         }
@@ -112,14 +121,28 @@ public class SpriteNumber extends GameObject {
     }
 
     public float getNumberHeight() {
+
+        return getNumberHeight(true);
+    }
+
+    public float getNumberHeight(boolean isSpriteNum) {
         float maxHeight = 0f;
-        for (Sprite spriteNum : getSpriteNumberArray()) {
-            if (spriteNum.getHeight() > maxHeight) {
-                maxHeight = spriteNum.getHeight();
+        if (isSpriteNum) {
+            for (Sprite spriteNum : getSpriteNumberArray()) {
+                if (spriteNum.getHeight() > maxHeight) {
+                    maxHeight = spriteNum.getHeight();
+                }
+            }
+        } else {
+            for (Texture texture : textureArrayOfNumbers) {
+                if (texture.getHeight() * masterScale > maxHeight) {
+                    maxHeight = texture.getHeight() * masterScale;
+                }
             }
         }
         return maxHeight;
     }
+
 
     public float getCenterOfNumX() {
         return getSpriteNumberArray().get(0).getX() + getNumWidth() / 2f;

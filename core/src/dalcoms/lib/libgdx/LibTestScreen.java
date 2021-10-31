@@ -156,6 +156,14 @@ public class LibTestScreen implements Screen {
     }
 
     private void testNumSprite() {
+
+        SpriteGameObject sgoWhite =
+                new SpriteGameObject(new Texture(Gdx.files.internal("rect_1.png")), 0, 0)
+                        .setSpriteBatch(this.game.getSpriteBatch());
+        sgoWhite.setCenterLocation(viewport.getWorldWidth() / 2f, viewport.getWorldHeight() / 2f);
+        renderables.add(sgoWhite);
+        sgoWhite.setColor(new Color(0xffff00ff));
+
         final GameTimer gameTimer = new GameTimer().start();
 
 
@@ -172,13 +180,14 @@ public class LibTestScreen implements Screen {
         tNum.add(new Texture(Gdx.files.internal("num_9.png")));
 
         final SpriteNumber spNum =
-                new SpriteNumber(tNum, (int) gameTimer.getCurTimeSec(), 100, 100,0.5f)
+                new SpriteNumber(tNum, 389, 0, 0, 2f, SpriteNumber.AlignTo.CENTER)
                         .setSpriteBatch(this.game.getSpriteBatch());
 //        spNum.move(500, 500, 1f, EaseBackIn.getInstance());
-        spNum.rotate(360, 3f);
+//        spNum.rotate(360, 3f);
         spNum.paint(1f, 0.5f, 0.5f, 1f, 3f);
-        spNum.setAlignTo(SpriteNumber.AlignTo.CENTER);
-        spNum.setCenterLocationX(viewport.getWorldWidth() / 2f);
+//        spNum.setAlignTo(SpriteNumber.AlignTo.CENTER);
+        spNum.setCenterLocation(sgoWhite.getCenterLocationX(), sgoWhite.getCenterLocationY());
+//        spNum.setCenterLocationX(viewport.getWorldWidth() / 2f);
 //        spNum.setEventListenerRotate(new VariationPerTime.EventListener() {
 //            @Override
 //            public void onUpdate(float curTime, float curVar) {
@@ -199,7 +208,8 @@ public class LibTestScreen implements Screen {
         gameTimer.setEventListener(new GameTimer.EventListener() {
             @Override
             public void onTimer1sec(float curTimeSec, int timeCount) {
-
+                spNum.setNumber(timeCount, true);
+                Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
             }
 
             @Override
@@ -208,8 +218,7 @@ public class LibTestScreen implements Screen {
 
             @Override
             public void onTimer250msec(float curTimeSec, int timeCount) {
-                spNum.setNumber(timeCount);
-                Gdx.app.log(strDebug, "On 1sec : curTime : " + curTimeSec);
+
 
             }
         });
