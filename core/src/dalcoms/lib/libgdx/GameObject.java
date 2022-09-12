@@ -33,8 +33,8 @@ public class GameObject implements Renderable, IGestureInput {
             onScalingY = false;
 
     public GameObject() {
-        initVariationPerTime();
         renderables = new Array<>();
+        initVariationPerTime();
         tags = new Array<>();
     }
 
@@ -46,6 +46,7 @@ public class GameObject implements Renderable, IGestureInput {
 
         renderables = new Array<>();
         initVariationPerTime();
+        tags = new Array<>();
     }
 
     private void initVariationPerTime() {
